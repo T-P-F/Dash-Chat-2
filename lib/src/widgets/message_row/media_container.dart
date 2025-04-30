@@ -33,13 +33,14 @@ class MediaContainer extends StatelessWidget {
     );
     switch (media.type) {
       case MediaType.video:
-        return Stack(
-          alignment: AlignmentDirectional.bottomEnd,
-          children: <Widget>[
-            VideoPlayer(url: media.url, key: Key(media.url)),
-            if (media.isUploading) loading
-          ],
-        );
+        return const Placeholder();
+      // return Stack(
+      //   alignment: AlignmentDirectional.bottomEnd,
+      //   children: <Widget>[
+      //     VideoPlayer(url: media.url, key: Key(media.url)),
+      //     if (media.isUploading) loading
+      //   ],
+      // );
       case MediaType.image:
         return Stack(
           alignment: AlignmentDirectional.bottomEnd,
@@ -100,8 +101,7 @@ class MediaContainer extends StatelessWidget {
         alignment: isOwnMessage ? WrapAlignment.end : WrapAlignment.start,
         children: media.map(
           (ChatMedia m) {
-            final double gallerySize =
-                (MediaQuery.of(context).size.width * 0.7) / 2 - 5;
+            final double gallerySize = (MediaQuery.of(context).size.width * 0.7) / 2 - 5;
             final bool isImage = m.type == MediaType.image;
             return Container(
               color: Colors.transparent,

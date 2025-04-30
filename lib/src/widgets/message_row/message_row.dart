@@ -54,8 +54,7 @@ class MessageRow extends StatelessWidget {
     final bool isOwnMessage = message.user.id == currentUser.id;
     bool isPreviousSameAuthor = false;
     bool isNextSameAuthor = false;
-    if (previousMessage != null &&
-        previousMessage!.user.id == message.user.id) {
+    if (previousMessage != null && previousMessage!.user.id == message.user.id) {
       isPreviousSameAuthor = true;
     }
     if (nextMessage != null && nextMessage!.user.id == message.user.id) {
@@ -70,15 +69,12 @@ class MessageRow extends StatelessWidget {
               : messageOptions.marginDifferentAuthor,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
-        mainAxisAlignment:
-            isOwnMessage ? MainAxisAlignment.end : MainAxisAlignment.start,
+        mainAxisAlignment: isOwnMessage ? MainAxisAlignment.end : MainAxisAlignment.start,
         children: <Widget>[
           if (messageOptions.showOtherUsersAvatar)
             Opacity(
               opacity:
-                  !isOwnMessage && (!isNextSameAuthor || isBeforeDateSeparator)
-                      ? 1
-                      : 0,
+                  !isOwnMessage && (!isNextSameAuthor || isBeforeDateSeparator) ? 1 : 0,
               child: getAvatar(),
             ),
           if (!messageOptions.showOtherUsersAvatar)
@@ -92,13 +88,12 @@ class MessageRow extends StatelessWidget {
                 : null,
             child: ConstrainedBox(
               constraints: BoxConstraints(
-                maxWidth: messageOptions.maxWidth ??
-                    MediaQuery.of(context).size.width * 0.7,
+                maxWidth:
+                    messageOptions.maxWidth ?? MediaQuery.of(context).size.width * 0.7,
               ),
               child: Column(
-                crossAxisAlignment: isOwnMessage
-                    ? CrossAxisAlignment.end
-                    : CrossAxisAlignment.start,
+                crossAxisAlignment:
+                    isOwnMessage ? CrossAxisAlignment.end : CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   if (messageOptions.top != null)
@@ -145,8 +140,7 @@ class MessageRow extends StatelessWidget {
                             messageOptions: messageOptions,
                           ),
                   if (messageOptions.bottom != null)
-                    messageOptions.bottom!(
-                        message, previousMessage, nextMessage),
+                    messageOptions.bottom!(message, previousMessage, nextMessage),
                 ],
               ),
             ),
